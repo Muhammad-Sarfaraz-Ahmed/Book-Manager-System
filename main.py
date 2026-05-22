@@ -63,16 +63,30 @@ class BookManager:
         print("Books saved successfully!")
 
     def load_books(self):
+
         try:
+
             with open("books.json", "r") as file:
+
                 data = json.load(file)
 
+                self.books = []
+
                 for item in data:
+
                     book = Book(item["title"], item["author"])
+
                     self.books.append(book)
 
+                print("Books loaded successfully.")
+
         except FileNotFoundError:
+
             print("No previous books found.")
+
+        except json.JSONDecodeError:
+
+            print("Error reading JSON file.")
 
 
 def main():
