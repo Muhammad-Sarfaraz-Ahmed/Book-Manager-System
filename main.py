@@ -29,10 +29,18 @@ class BookManager:
         self.books = []
 
     def add_book(self):
-        title = input("Enter book title: ")
-        author = input("Enter author name: ")
+        title = input("Enter book title: ").strip()
+
+        author = input("Enter author name: ").strip()
+
+        if title == "" or author == "":
+
+            print("Title and Author cannot be empty!")
+
+            return
 
         book = Book(title, author)
+
         self.books.append(book)
 
         print("Book added successfully!")
